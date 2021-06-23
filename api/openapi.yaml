@@ -1,0 +1,428 @@
+openapi: 3.0.0
+info:
+  title: C3 Experiential Learning Private Limited
+  description: API DOCUMENTATION
+  version: 1.0.0
+servers:
+- url: https://pizza-c3.herokuapp.com/
+  description: Production server
+paths:
+  /pizza/{pk}:
+    get:
+      tags:
+      - pizza
+      summary: get pizza details
+      operationId: pizzaPkGET
+      parameters:
+      - name: pk
+        in: path
+        description: object id of pizza
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: objectId
+      responses:
+        "201":
+          description: pizza details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_201'
+        "404":
+          description: The resource does not exist
+      x-swagger-router-controller: Pizza
+    put:
+      tags:
+      - pizza
+      summary: To create a new pizza Entry batch
+      operationId: pizzaPkPUT
+      parameters:
+      - name: pk
+        in: path
+        description: Any value
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pizza'
+      responses:
+        "201":
+          description: pizza details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_201'
+        "404":
+          description: The resource does not exist
+      x-swagger-router-controller: InventoryBatch
+    delete:
+      tags:
+      - pizza
+      summary: To Delete the inventory batch.
+      operationId: pizzaPkDELETE
+      parameters:
+      - name: pk
+        in: path
+        description: pk value should be primary key to delete the inventory batch
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "204":
+          description: NO CONTENT
+        "404":
+          description: The resource does not exist
+      x-swagger-router-controller: Pizza
+    patch:
+      tags:
+      - pizza
+      summary: To update the pizza.
+      operationId: pizzaPkPATCH
+      parameters:
+      - name: pk
+        in: path
+        description: pk value should be the object id of pizza
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: objectId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pizza'
+      responses:
+        "201":
+          description: pizza details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_201'
+        "404":
+          description: The resource does not exist
+      x-swagger-router-controller: Pizza
+  /pizza-topping/{pk}:
+    get:
+      tags:
+      - pizza-topping
+      summary: get pizza-topping details
+      operationId: pizza_toppingPkGET
+      parameters:
+      - name: pk
+        in: path
+        description: object id of pizza-topping
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: objectId
+      responses:
+        "201":
+          description: pizza-topping details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pizzatopping'
+        "404":
+          description: not found
+      x-swagger-router-controller: PizzaTopping
+    put:
+      tags:
+      - pizza-topping
+      summary: To create a new pizza Entry batch
+      operationId: pizza_toppingPkPUT
+      parameters:
+      - name: pk
+        in: path
+        description: Any value
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pizzatopping'
+      responses:
+        "201":
+          description: pizza details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_201_1'
+        "404":
+          description: The resource does not exist
+      x-swagger-router-controller: InventoryBatch
+    delete:
+      tags:
+      - pizza-topping
+      summary: To Delete pizza topping.
+      operationId: pizza_toppingPkDELETE
+      parameters:
+      - name: pk
+        in: path
+        description: pk value should be object id of pizza topping
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: objectId
+      responses:
+        "204":
+          description: NO CONTENT
+        "404":
+          description: The resource does not exist
+      x-swagger-router-controller: PizzaTopping
+    patch:
+      tags:
+      - pizza-topping
+      summary: To update the pizza-topping.
+      operationId: pizza_toppingPkPATCH
+      parameters:
+      - name: pk
+        in: path
+        description: pk value should be the object id of pizza-topping
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: objectId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pizzatopping'
+      responses:
+        "201":
+          description: pizza-topping details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_201_1'
+        "404":
+          description: The resource does not exist
+      x-swagger-router-controller: PizzaTopping
+  /pizza-size/{pk}:
+    get:
+      tags:
+      - pizza-size
+      summary: get pizza-size details
+      operationId: pizza_sizePkGET
+      parameters:
+      - name: pk
+        in: path
+        description: object id of pizza-size
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: objectId
+      responses:
+        "201":
+          description: pizza-size details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pizzasize'
+        "404":
+          description: not found
+      x-swagger-router-controller: PizzaSize
+    put:
+      tags:
+      - pizza-size
+      summary: To add a new pizza size
+      operationId: pizza_sizePkPUT
+      parameters:
+      - name: pk
+        in: path
+        description: Any value
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pizzasize'
+      responses:
+        "201":
+          description: pizza-size details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_201_2'
+        "404":
+          description: The resource does not exist
+      x-swagger-router-controller: InventoryBatch
+    delete:
+      tags:
+      - pizza-size
+      summary: To Delete pizza-size .
+      operationId: pizza_sizePkDELETE
+      parameters:
+      - name: pk
+        in: path
+        description: pk value should be object id of pizza size
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: objectId
+      responses:
+        "204":
+          description: NO CONTENT
+        "404":
+          description: The resource does not exist
+      x-swagger-router-controller: PizzaSize
+    patch:
+      tags:
+      - pizza-size
+      summary: To update the pizza-size.
+      operationId: pizza_sizePkPATCH
+      parameters:
+      - name: pk
+        in: path
+        description: pk value should be the object id of pizza-size
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: objectId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pizzasize'
+      responses:
+        "201":
+          description: pizza-size details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_201_2'
+        "404":
+          description: The resource does not exist
+      x-swagger-router-controller: PizzaSize
+  /pizza-list/{page}:
+    get:
+      tags:
+      - pizza
+      summary: get pizza-list using query
+      operationId: pizza_listPageGET
+      parameters:
+      - name: page
+        in: path
+        description: page number
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: regular or square
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: size
+        in: query
+        description: to filter pizza list by size
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "201":
+          description: pizza list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        format: objectId
+                  - $ref: '#/components/schemas/pizza'
+                x-content-type: application/json
+      x-swagger-router-controller: Pizza
+components:
+  schemas:
+    pizza:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - regular
+          - square
+        topping:
+          type: array
+          items:
+            type: string
+        size:
+          type: string
+    pizzasize:
+      type: object
+      properties:
+        size:
+          type: string
+      example:
+        size: size
+    pizzatopping:
+      type: object
+      properties:
+        topping:
+          type: string
+      example:
+        topping: topping
+    inline_response_201:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: string
+            format: objectId
+      - $ref: '#/components/schemas/pizza'
+    inline_response_201_1:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: string
+            format: objectId
+      - $ref: '#/components/schemas/pizzatopping'
+    inline_response_201_2:
+      allOf:
+      - type: object
+        properties:
+          id:
+            type: string
+            format: objectId
+      - $ref: '#/components/schemas/pizzasize'
